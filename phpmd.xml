@@ -29,11 +29,4 @@
             <property name="minimum" value="3" />
         </properties>
     </rule>
-
-    <rule ref="rulesets/naming.xml/ShortMethodName">
-        <properties>
-            <property name="exceptions" value="to" />
-            <property name="minimum" value="3" />
-        </properties>
-    </rule>
 </ruleset>
