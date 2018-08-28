@@ -12,10 +12,11 @@ class Database extends PDO
     public function __construct()
     {
         try {
-            $dbPatch = APP_ROOT . "database/database.db";
-            parent::__construct("sqlite:" . $dbPatch);
+            parent::__construct("sqlite:" . config("database.sqlite_patch"));
 
-            $this->createTasksTable();
+            if (config("database.create_table")) {
+                $this->createTasksTable();
+            }
         } catch (\Exception $e) {
             error_log("Could not connect to database: " . $e->getMessage());
         }
