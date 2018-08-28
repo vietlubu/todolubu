@@ -55,7 +55,7 @@ class Model
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$this->primaryKey => $id]);
 
-        return $stmt->fetch();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
 
@@ -72,6 +72,46 @@ class Model
         $sql = "SELECT {$fields} FROM {$this->table}";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Create record
+     *
+     * @param Array $data Data
+     *
+     * @return Boolean
+     */
+    public function create($data)
+    {
+        $keys = array_keys($data);
+        $fields = implode(", ", $keys);
+        $values = ':' . implode(", :", $keys);
+
+        $sql = "INSERT INTO {$this->table} ({$fields}) VALUES ({$values})";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute($data);
+    }
+
+    /**
+     * Create record
+     *
+     * @param Array $data Data
+     *
+     * @return Boolean
+     */
+    public function update($data)
+    {
+        $keys = array_keys($data);
+
+        $values = "";
+        foreach ($keys as $field) {
+            $values .= $field . '=:' . $field . ', ';
+        }
+        $values = trim($values, ", ");
+
+        $sql = "UPDATE {$this->table} SET {$values} WHERE {$this->primaryKey}=:{$this->primaryKey}";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute($data);
     }
 }
