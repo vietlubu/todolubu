@@ -135,7 +135,7 @@ function reloadForm(event) {
         $('#frm-task').find('input[name="ending_date"]').val(end);
     }
 
-    $('#frm-task').find('input[name="status"]').val(event.status);
+    $('#status').val(event.status);
 
     // Enable Update button
     $('#btn-add').hide();

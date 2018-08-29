@@ -71,6 +71,10 @@
             events: [],
             eventClick: function(calEvent, jsEvent, view) {
                 reloadForm(calEvent);
+            },
+            eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
+                reloadForm(event);
+                updateTask();
             }
         });
 
