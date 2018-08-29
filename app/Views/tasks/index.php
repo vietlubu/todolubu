@@ -50,9 +50,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+    <script src="/js/task.js"></script>
 
     <script>
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
 
         $('#calendar').fullCalendar({
             header: {
@@ -65,6 +68,11 @@
             eventLimit: true, // allow "more" link when too many events
             events: []
         });
+
+        loadCalendar();
+
     </script>
+
+
 </body>
 </html>
