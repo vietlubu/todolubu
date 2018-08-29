@@ -8,11 +8,13 @@ class Database extends PDO
 {
     /**
      * Construct function. Create connection to database
+     *
+     * @param string $dbPath Database path
      */
-    public function __construct()
+    public function __construct($dbPath)
     {
         try {
-            parent::__construct("sqlite:" . config("database.sqlite_patch"));
+            parent::__construct("sqlite:" . $dbPath);
 
             if (config("database.create_table")) {
                 $this->createTasksTable();
