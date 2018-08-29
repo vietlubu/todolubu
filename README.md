@@ -11,7 +11,7 @@
 - Apply PHPunit to some functions
 
 ### How to run
-- clone repo
+- `git clone https://github.com/vietlubu/todolubu.git`
 - cd to root folder
 - Run `composer install`
 - `cd public/`
