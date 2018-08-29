@@ -19,7 +19,7 @@ class Model
             throw \Exception("table must be defined");
         }
 
-        $this->db = new Database();
+        $this->db = new Database(config("database.sqlite_patch"));
     }
 
     /**
