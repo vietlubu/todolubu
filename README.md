@@ -5,6 +5,16 @@
 - PHP >=7.1
 - PHP sqlite extension
 
+### Library
+- phpmd/phpmd
+- squizlabs/php_codesniffer
+- phpunit/phpunit
+- guzzlehttp/guzzle
+- Jquery
+- momentJS
+- Bootstrap
+- FullCalendar
+
 ### Spec
 - MVC
 - Using `PHPCS` and `PHPMD` to check code convension
