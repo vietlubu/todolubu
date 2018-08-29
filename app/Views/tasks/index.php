@@ -17,12 +17,12 @@
     <div class="container">
         <h1>Todolubu</h1>
         <div id="task" class="col-md-4">
-            <form class="form-horizontal">
+            <form class="form-horizontal" name="task" id="frm-task">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="task" placeholder="Task" name="task">
+                    <input type="text" class="form-control" id="name" placeholder="Task" name="name" required>
                 </div>
                 <div class="form-group">
-                    <input type="datetime" class="form-control datepicker" id="starting_date" name="starting_date" placeholder="Starting date">
+                    <input type="datetime" class="form-control datepicker" id="starting_date" name="starting_date" placeholder="Starting date" required>
                 </div>
                 <div class="form-group">
                     <input type="datetime" class="form-control datepicker" id="ending_date" name="ending_date" placeholder="Ending date">
@@ -35,8 +35,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary">Add task</button>
-                    <button type="button" class="btn btn-warning">Update task</button>
+                    <button id="btn-add" type="button" class="btn btn-primary">Add task</button>
+                    <button id="btn-update" type="button" class="btn btn-warning hide">Update task</button>
                 </div>
             </form>
         </div>
@@ -70,6 +70,10 @@
         });
 
         loadCalendar();
+
+        $('#btn-add').on('click', function (e) {
+            createTask();
+        });
 
     </script>
 
