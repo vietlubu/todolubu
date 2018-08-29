@@ -9,6 +9,7 @@ function loadCalendar() {
             data[index]['title'] = data[index]['name'];
             data[index]['start'] = data[index]['starting_date'];
             data[index]['end'] = data[index]['ending_date'];
+            data[index]['backgroundColor'] = getBackgoundColor(data[index]['status']);
 
             delete(data[index]['name']);
             delete(data[index]['starting_date']);
@@ -81,6 +82,7 @@ function addEvent(values) {
     values['title'] = values['name'];
     values['start'] = values['starting_date'];
     values['end'] = values['ending_date'];
+    values['backgroundColor'] = getBackgoundColor(values['status']);
 
     delete(values['name']);
     delete(values['starting_date']);
@@ -133,4 +135,14 @@ function getFormData() {
 
 function validateForm(values) {
     return (values.name && values.starting_date);
+}
+
+function getBackgoundColor(status) {
+    if (status == 2) {
+        return "#ffbe76";
+    }
+    if (status == 3) {
+        return "#badc58";
+    }
+    return "";
 }
