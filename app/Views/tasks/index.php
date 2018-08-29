@@ -36,7 +36,8 @@
                 </div>
                 <div class="form-group">
                     <button id="btn-add" type="button" class="btn btn-primary">Add task</button>
-                    <button id="btn-update" type="button" class="btn btn-warning hide">Update task</button>
+                    <button id="btn-update" type="button" class="btn btn-warning" style="display: none;">Update task</button>
+                    <button id="btn-addnew" type="button" class="btn" style="display: none;">Add new</button>
                 </div>
             </form>
         </div>
@@ -66,13 +67,29 @@
             navLinks: true, // can click day/week names to navigate views
             editable: true,
             eventLimit: true, // allow "more" link when too many events
-            events: []
+            events: [],
+            eventClick: function(calEvent, jsEvent, view) {
+                reloadForm(calEvent);
+            }
         });
 
         loadCalendar();
 
         $('#btn-add').on('click', function (e) {
             createTask();
+        });
+
+        $('#btn-update').on('click', function (e) {
+            updateTask();
+        });
+
+        $('#btn-addnew').on('click', function (e) {
+            $('#frm-task').find('input').val('');
+            $('#frm-task').find('select').val(1);
+            $('#btn-add').show();
+            $('#btn-update').hide();
+            $(this).hide();
+            $('#name').focus();
         });
 
     </script>
