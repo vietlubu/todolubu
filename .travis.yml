@@ -6,3 +6,4 @@ before_script:
 script:
   - ./vendor/bin/phpcs -n --standard=phpcs.xml
   - ./vendor/bin/phpmd app text phpmd.xml
+  - ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
