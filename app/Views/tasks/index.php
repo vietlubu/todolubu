@@ -37,6 +37,7 @@
                 <div class="form-group">
                     <button id="btn-add" type="button" class="btn btn-primary">Add task</button>
                     <button id="btn-update" type="button" class="btn btn-warning" style="display: none;">Update task</button>
+                    <button id="btn-delete" type="button" class="btn btn-danger" style="display: none;">Delete task</button>
                     <button id="btn-addnew" type="button" class="btn" style="display: none;">Add new</button>
                 </div>
             </form>
@@ -83,11 +84,16 @@
             updateTask();
         });
 
+        $('#btn-delete').on('click', function (e) {
+            deleteTask();
+        });
+
         $('#btn-addnew').on('click', function (e) {
             $('#frm-task').find('input').val('');
             $('#frm-task').find('select').val(1);
             $('#btn-add').show();
             $('#btn-update').hide();
+            $('#btn-delete').hide();
             $(this).hide();
             $('#name').focus();
         });

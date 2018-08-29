@@ -114,4 +114,18 @@ class Model
         $stmt = $this->db->prepare($sql);
         return $stmt->execute($data);
     }
+
+    /**
+     * Delete record
+     *
+     * @param int $id Resource ID
+     *
+     * @return Boolean
+     */
+    public function delete($id)
+    {
+        $sql = "DELETE FROM {$this->table} WHERE {$this->primaryKey}=:{$this->primaryKey}";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$this->primaryKey => $id]);
+    }
 }

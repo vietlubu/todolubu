@@ -76,4 +76,25 @@ class TaskController extends JsonController
         }
         return $this->successResponse("Updated task!");
     }
+
+    /**
+     * Delete a task
+     *
+     * @param int $id Task ID
+     *
+     * @return json
+     */
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] != "DELETE") {
+            return $this->failedResponse("Incorrect method!");
+        }
+
+        $task = $this->task->delete($id);
+
+        if (!$task) {
+            return $this->failedResponse("Cannot delete!");
+        }
+        return $this->successResponse("Deleted task!");
+    }
 }

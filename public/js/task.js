@@ -71,7 +71,31 @@ function updateTask() {
     } else {
         alert("Input your fields");
     }
+}
 
+function deleteTask() {
+    let id = $('#frm-task').find('input[name="id"]').val();
+    if (id > 0) {
+        $.ajax({
+            url: "/task/delete/" + id,
+            method: "DELETE"
+        }).done(function(data) {
+            if (data.status == "success") {
+                $("#calendar").fullCalendar('removeEvents', id);
+
+                $('#frm-task').find('input').val('');
+                $('#frm-task').find('select').val(1);
+                $('#btn-add').show();
+                $('#btn-update').hide();
+                $('#btn-delete').hide();
+                $('#btn-addnew').hide();
+            } else {
+                alert("Cannot delete!");
+            }
+        }).fail(function(data){
+            alert("Cannot delete!");
+        });
+    }
 }
 
 
@@ -117,6 +141,7 @@ function reloadForm(event) {
     $('#btn-add').hide();
     $('#btn-update').show();
     $('#btn-addnew').show();
+    $('#btn-delete').show();
 
     // Add input id hidden
     $('input[name="id"').remove();
